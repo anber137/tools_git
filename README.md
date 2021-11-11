@@ -3,11 +3,16 @@
 1. Найдите полный хеш и комментарий коммита, хеш которого начинается на aefea
 
 Ответ:
+
 HASH: aefead2207ef7e2aa5dc81a34aedf0cad4c32545
 Comment: Update CHANGELOG.md
 
 Описание решения:
+
+
+``` bash
 git show -s --pretty=format:'HASH: '%H%n'Comment: '%B  aefea
+```
 
 В данной команде использовалось форматирование с параметром %B (subject and body),
 но вполне достаточно было %s, так как комментарий однострочный и body отсутствует, только subject
@@ -15,6 +20,7 @@ git show -s --pretty=format:'HASH: '%H%n'Comment: '%B  aefea
 2. Какому тегу соответствует коммит 85024d3
 
 Ответ:
+
 tag: v0.12.23
 
 Описание решения:
@@ -26,19 +32,25 @@ git show -s --format=%D 85024d3
 3. Сколько родителей у коммита b8d720? Напишите их хеши.
 
 Ответ: 2
+
 56cd7859e05c36c06b56d013b55a252d0bb7e158 9ea88f22fc6269854151c571162c5bcf958bee2b
 
 Описание решения:
 
 Можно найти командой с указанием параметра %P (parent hashes):
+
+``` bash
 git show -s --pretty=format:%P b8d720
+```
 
 либо
 
-!/bin/sh
+``` bash
+#!/bin/sh
 echo "Use only for merge."
 echo "Parent hashes($(git rev-parse $1)) commit:"
 git rev-parse $(git show $1 | grep Merge: |  awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}')
+```
 
 где в качестве первого параметра командной строки передается хеш.
 Первая комада и проще и универсальние.
@@ -60,7 +72,9 @@ Total commits: 9
 
 Описание решения:
 
+``` bash
 cmd=$(git log v0.12.23..v0.12.24^ --oneline --pretty=format:'HASH: '%H', Subject: '%s) && echo "$cmd" && echo "$cmd" |  wc -l | awk '{print "Total commits: " $1}'
+```
 
 Если требуется исключить из вывода и подсчета сами коммиты c тегами, тогда мы ставим знак ^ после последнего тега для вывода не самого тега, а его родителя и 
 на оборот, если необходимо включить в подсчет и вывод коммиты с тегами, то ставим знак ^ после первого тега, для вывода родителя последнего коммита команды git log,
@@ -77,7 +91,9 @@ cmd=$(git log v0.12.23..v0.12.24^ --oneline --pretty=format:'HASH: '%H', Subject
 
 Так как функция была создана и больше не менялась, то можно воспользоваться командой:
 
+``` bash
 git log -S'func providerSource(' --oneline
+```
 
 6. Найдите все коммиты в которых была изменена функция globalPluginDirs
 
@@ -116,7 +132,9 @@ Date:   Thu Apr 13 18:05:58 2017 -0700
 
 Описание решения:
 
+``` bash
 fname=$(git grep -l 'func globalPluginDirs(') && git log -L :globalPluginDirs:$fname | grep 'commit' -A 4
+``` 
 
 Вывод можно сократить до одной строки на комит убрав "-A 4" в grep
 
@@ -132,6 +150,7 @@ Martin Atkins
 Команда git log -S нам соответственно показывает два комита, в котором функция была создана и в котором удалена.
 Для того, что бы найти в каком именно комите была создана функция проверим каждый комит на наличие строки "+func synchronizedWriters("
 
+``` bash
 #!/bin/bash
 hashs=$(git log -S'func synchronizedWriters(' | grep 'commit' | awk '{print($2)}')
 for hash in $hashs
@@ -141,5 +160,6 @@ do
         git show -s --pretty=format:'Author: '%an $hash
   fi
 done
+```
 
 
