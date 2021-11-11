@@ -58,15 +58,15 @@ git rev-parse $(git show $1 | grep Merge: |  awk '{for (i=2; i<NF; i++) printf $
 
 Ответ:
 
-HASH: b14b74c4939dcab573326f4e3ee2a62e23e12f89, Subject: [Website] vmc provider links
-HASH: 3f235065b9347a758efadc92295b540ee0a5e26e, Subject: Update CHANGELOG.md
-HASH: 6ae64e247b332925b872447e9ce869657281c2bf, Subject: registry: Fix panic when server is unreachable
-HASH: 5c619ca1baf2e21a155fcdb4c264cc9e24a2a353, Subject: website: Remove links to the getting started guide's old location
-HASH: 06275647e2b53d97d4f0a19a0fec11f6d69820b5, Subject: Update CHANGELOG.md
-HASH: d5f9411f5108260320064349b757f55c09bc4b80, Subject: command: Fix bug when using terraform login on Windows
-HASH: 4b6d06cc5dcb78af637bbb19c198faff37a066ed, Subject: Update CHANGELOG.md
-HASH: dd01a35078f040ca984cdd349f18d0b67e486c35, Subject: Update CHANGELOG.md
-HASH: 225466bc3e5f35baa5d07197bbc079345b77525e, Subject: Cleanup after v0.12.23 release
+HASH: b14b74c4939dcab573326f4e3ee2a62e23e12f89, Subject: [Website] vmc provider links  
+HASH: 3f235065b9347a758efadc92295b540ee0a5e26e, Subject: Update CHANGELOG.md  
+HASH: 6ae64e247b332925b872447e9ce869657281c2bf, Subject: registry: Fix panic when server is unreachable  
+HASH: 5c619ca1baf2e21a155fcdb4c264cc9e24a2a353, Subject: website: Remove links to the getting started guide's old location  
+HASH: 06275647e2b53d97d4f0a19a0fec11f6d69820b5, Subject: Update CHANGELOG.md  
+HASH: d5f9411f5108260320064349b757f55c09bc4b80, Subject: command: Fix bug when using terraform login on Windows  
+HASH: 4b6d06cc5dcb78af637bbb19c198faff37a066ed, Subject: Update CHANGELOG.md  
+HASH: dd01a35078f040ca984cdd349f18d0b67e486c35, Subject: Update CHANGELOG.md  
+HASH: 225466bc3e5f35baa5d07197bbc079345b77525e, Subject: Cleanup after v0.12.23 release  
 
 Total commits: 9
 
