@@ -18,7 +18,10 @@ git show -s --pretty=format:'HASH: '%H%n'Comment: '%B  aefea
 tag: v0.12.23
 
 Описание решения:
+
+``` bash
 git show -s --format=%D 85024d3
+```
 
 3. Сколько родителей у коммита b8d720? Напишите их хеши.
 
