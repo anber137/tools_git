@@ -37,7 +37,7 @@ git show -s --format=%D 85024d3
 
 Описание решения:
 
-Можно найти командой с указанием параметра %P (parent hashes):
+Можно найти командой git show с указанием параметра %P (parent hashes):
 
 ``` bash
 git show -s --pretty=format:%P b8d720
@@ -51,9 +51,8 @@ echo "Use only for merge."
 echo "Parent hashes($(git rev-parse $1)) commit:"
 git rev-parse $(git show $1 | grep Merge: |  awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}')
 ```
-
 где в качестве первого параметра командной строки передается хеш.
-Первая комада и проще и универсальние.
+НО! Первая комада и проще и универсальние.
 
 4. Перечислите хеши и комментарии всех коммитов которые были сделаны между тегами v0.12.23 и v0.12.24.
 
@@ -68,6 +67,7 @@ HASH: d5f9411f5108260320064349b757f55c09bc4b80, Subject: command: Fix bug when u
 HASH: 4b6d06cc5dcb78af637bbb19c198faff37a066ed, Subject: Update CHANGELOG.md
 HASH: dd01a35078f040ca984cdd349f18d0b67e486c35, Subject: Update CHANGELOG.md
 HASH: 225466bc3e5f35baa5d07197bbc079345b77525e, Subject: Cleanup after v0.12.23 release
+
 Total commits: 9
 
 Описание решения:
